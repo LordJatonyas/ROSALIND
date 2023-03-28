@@ -4,11 +4,20 @@ import sys
 # Upon maturity, 2 rabbits produced
 # Pairs die after m months
 
+# [1 1]
+# 1, 2
+# 2, 1, 2
+# 2, 1, 3
+# 3, 2, 4
 def final_rabbit_count(n, m):
+    if n == 1:
+        return 1
+    if m == 1:
+        return 0
     rabbits = [1, 1]
     for i in range(n):
         curr = rabbits[-1]
-        if len(rabbits) > m - 1:
+        if len(rabbits) > m:
             curr -= rabbits[-m]
         curr += rabbits[-2]
         rabbits.append(curr)
